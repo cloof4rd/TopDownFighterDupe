@@ -9,6 +9,7 @@ namespace SmallScaleInc.TopDownPixelCharactersPack1
         private Rigidbody2D rb;
         private Vector2 movementDirection;
         private SpriteRenderer spriteRenderer;
+        private Animator animator; // Reference to the Animator component
         private bool isRunning = false;
 
         // Rolling
@@ -44,6 +45,7 @@ namespace SmallScaleInc.TopDownPixelCharactersPack1
         {
             rb = GetComponent<Rigidbody2D>();
             spriteRenderer = GetComponent<SpriteRenderer>(); // Get the SpriteRenderer component
+            animator = GetComponent<Animator>(); // Get the Animator component
         }
 
         void Update()
@@ -61,10 +63,10 @@ namespace SmallScaleInc.TopDownPixelCharactersPack1
                 isRunning = false;
             }
 
-            // Roll action (Left Shift key)
+            // Trigger flip animation (Left Shift key)
             if (Input.GetKeyDown(KeyCode.LeftShift) && !isRolling)
             {
-                StartCoroutine(Roll());
+                TriggerFlipAnimation();
             }
 
             // Handle crouching
@@ -85,6 +87,22 @@ namespace SmallScaleInc.TopDownPixelCharactersPack1
             {
                 PerformQueuedAttack();
             }
+        }
+
+        // Function to trigger the flip animation
+        void TriggerFlipAnimation()
+        {
+            animator.SetBool("isFlipping", true); // Start the flip animation
+
+            // Reset the flip after a small delay (matching the length of the animation)
+            StartCoroutine(ResetFlipAnimation());
+        }
+
+        // Reset the flip animation after the duration
+        IEnumerator ResetFlipAnimation()
+        {
+            yield return new WaitForSeconds(0.5f); // Adjust the wait time based on the flip animation length
+            animator.SetBool("isFlipping", false); // Reset the flip animation
         }
 
         IEnumerator Roll()
