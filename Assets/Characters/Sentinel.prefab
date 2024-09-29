@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 3742585802668212908}
   - component: {fileID: 3807004650160328632}
   - component: {fileID: 2810157460691499459}
-  - component: {fileID: 5382427088059990730}
+  - component: {fileID: -5348114783257927902}
+  - component: {fileID: -5491235006691212009}
+  - component: {fileID: -480254029625316974}
   m_Layer: 0
   m_Name: Sentinel
   m_TagString: Untagged
@@ -75,13 +77,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2096915759
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 74
   m_Sprite: {fileID: 21300000, guid: f63b39d7bec102e4a806cdc8308b7e0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -95,14 +97,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512369847662268957}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_LinearDrag: 0.1
+  m_AngularDrag: 100
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -110,10 +112,10 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!95 &2810157460691499459
 Animator:
   serializedVersion: 5
@@ -124,7 +126,7 @@ Animator:
   m_GameObject: {fileID: 5512369847662268957}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2458a2ef15fa9a14295bb6a9e7c61bfd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -135,8 +137,59 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &5382427088059990730
-BoxCollider2D:
+--- !u!114 &-5348114783257927902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512369847662268957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d73210ef833024bb44ad7c5ddc4638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  isRolling: 0
+  rollDuration: 0.5
+  rollSpeedMultiplier: 2
+  isActive: 0
+  isRanged: 0
+  isStealth: 1
+  isCrouching: 0
+  isShapeShifter: 0
+  isSummoner: 0
+  projectilePrefab: {fileID: 7602014574353706917, guid: 49a7ece029b621745910929da66dc10b, type: 3}
+  AoEPrefab: {fileID: 5771732892041306520, guid: 28612e234f5d0f44da7676f8dcddb303, type: 3}
+  Special1Prefab: {fileID: 2291971170736607146, guid: 4f9c246f468473648bc72340dccc6807, type: 3}
+  HookPrefab: {fileID: 2291971170736607146, guid: 4f9c246f468473648bc72340dccc6807, type: 3}
+  ShapeShiftPrefab: {fileID: 0}
+  projectileSpeed: 1
+  shootDelay: 0.3
+  isMelee: 1
+  meleePrefab: {fileID: 0}
+--- !u!114 &-5491235006691212009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512369847662268957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfa38304d47c864d8315b1ec8603a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDirection: isEast
+  isCurrentlyRunning: 0
+  isCrouching: 0
+  rollTime: 0.5
+  isRunning: 0
+  isRunningBackwards: 0
+  isStrafingLeft: 0
+  isStrafingRight: 0
+--- !u!58 &-480254029625316974
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -150,7 +203,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -167,16 +220,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02, y: 0.005}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.05342512}
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.2}
-  m_EdgeRadius: 0
+  m_Radius: 0.05731176

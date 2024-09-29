@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 7402163877734202055}
   - component: {fileID: 1472474804311503134}
   - component: {fileID: 6594612187833931885}
-  - component: {fileID: 4110860141977225338}
+  - component: {fileID: 342092365885500769}
+  - component: {fileID: 4080421059493625332}
+  - component: {fileID: -5106594582736687293}
   m_Layer: 0
   m_Name: Broadsword
   m_TagString: Untagged
@@ -75,13 +77,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2096915759
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 74
   m_Sprite: {fileID: 21300000, guid: b68738c3b7b489d47ada7bbaf4eb67e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -97,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 3390296414637708143}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 555a2e2ea68c60b419357b718d9a7f0f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -116,14 +118,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3390296414637708143}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_LinearDrag: 0.1
+  m_AngularDrag: 100
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -131,12 +133,63 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &4110860141977225338
-BoxCollider2D:
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &342092365885500769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390296414637708143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d73210ef833024bb44ad7c5ddc4638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  isRolling: 0
+  rollDuration: 0.5
+  rollSpeedMultiplier: 2
+  isActive: 1
+  isRanged: 0
+  isStealth: 1
+  isCrouching: 0
+  isShapeShifter: 0
+  isSummoner: 0
+  projectilePrefab: {fileID: 2846714283958043400, guid: 85d894fa3df3928488f2b15a56422725, type: 3}
+  AoEPrefab: {fileID: 0}
+  Special1Prefab: {fileID: 7530883872210731708, guid: 8eedc8b26cf5df04d910a2a33fc26ad2, type: 3}
+  HookPrefab: {fileID: 7834434767622723118, guid: 34ed4928412da414c8b18dce982a9dfd, type: 3}
+  ShapeShiftPrefab: {fileID: 0}
+  projectileSpeed: 2
+  shootDelay: 0.4
+  isMelee: 1
+  meleePrefab: {fileID: 0}
+--- !u!114 &4080421059493625332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390296414637708143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfa38304d47c864d8315b1ec8603a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDirection: isEast
+  isCurrentlyRunning: 0
+  isCrouching: 0
+  rollTime: 0.5
+  isRunning: 0
+  isRunningBackwards: 0
+  isStrafingLeft: 0
+  isStrafingRight: 0
+--- !u!58 &-5106594582736687293
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -150,7 +203,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -167,16 +220,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.023, y: -0.05}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.053425126}
   serializedVersion: 2
-  m_Size: {x: 0.24, y: 0.2}
-  m_EdgeRadius: 0
+  m_Radius: 0.058510147
