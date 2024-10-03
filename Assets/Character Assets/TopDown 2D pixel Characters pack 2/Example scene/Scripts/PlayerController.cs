@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 namespace SmallScaleInc.TopDownPixelCharactersPack1
 {
@@ -50,8 +51,8 @@ namespace SmallScaleInc.TopDownPixelCharactersPack1
 
         void Update()
         {
-            HandleMovement();    // Left joystick for movement
-            RotateCharacter();    // Right joystick for facing direction
+            //HandleMovement();    // Left joystick for movement
+            //RotateCharacter();    // Right joystick for facing direction
 
             // Check if movement keys are pressed (based on joystick input)
             if(movementDirection.magnitude > 0)
@@ -80,7 +81,7 @@ namespace SmallScaleInc.TopDownPixelCharactersPack1
             }
 
             // Handle special moves and queueing
-            HandleSpecialMoveQueue();
+            //HandleSpecialMoveQueue();
 
             // Handle attack logic
             if(Input.GetMouseButtonDown(0)) // Left mouse button
@@ -213,19 +214,74 @@ namespace SmallScaleInc.TopDownPixelCharactersPack1
             }
         }
 
-        void HandleMovement()
-        {
-            // Get input from the left joystick
-            float moveX = Input.GetAxis("Horizontal"); // Left joystick horizontal axis
-            float moveY = Input.GetAxis("Vertical");   // Left joystick vertical axis
+        //void HandleMovement()
+        //{
+        //    // Get input from the left joystick
+        //    float moveX = Input.GetAxis("Horizontal"); // Left joystick horizontal axis
+        //    float moveY = Input.GetAxis("Vertical");   // Left joystick vertical axis
 
-            // Set movement direction based on joystick input
-            movementDirection = new Vector2(moveX, moveY);
+        //    // Set movement direction based on joystick input
+        //    movementDirection = new Vector2(moveX, moveY);
+
+        //    // Normalize movement direction to ensure consistent speed
+        //    if (movementDirection.magnitude > 1)
+        //    {
+        //        movementDirection.Normalize();
+        //    }
+        //}
+
+        private void OnMove(InputValue inputValue)
+        {
+            movementDirection = inputValue.Get<Vector2>();
 
             // Normalize movement direction to ensure consistent speed
             if(movementDirection.magnitude > 1)
             {
                 movementDirection.Normalize();
+            }
+        }
+
+        private void OnLook(InputValue inputValue)
+        {
+            var lookDirection = inputValue.Get<Vector2>();
+
+            // If there is input from the right joystick, rotate the character to face that direction
+            if(lookDirection.magnitude > 0.1f) // Avoid very small values
+            {
+                float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+                //transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+        }
+
+        private void OnButtonSouth(InputValue inputValue)
+        {
+            if(isActive)
+            {
+                queuedSpecialMove = 1;
+            }
+        }
+
+        private void OnButtonEast(InputValue inputValue)
+        {
+            if(isActive)
+            {
+                queuedSpecialMove = 2;
+            }
+        }
+
+        private void OnButtonWest(InputValue inputValue)
+        {
+            if(isActive)
+            {
+                queuedSpecialMove = 3;
+            }
+        }
+
+        private void OnButtonNorth(InputValue inputValue)
+        {
+            if(isActive)
+            {
+                queuedSpecialMove = 4;
             }
         }
 

@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1591,7 +1592,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.45959473, y: -0.0026245117}
+  m_AnchoredPosition: {x: 0.45947266, y: -0.0026855469}
   m_SizeDelta: {x: 1124.7, y: 1268.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850261798
@@ -1958,14 +1959,14 @@ MonoBehaviour:
   - {fileID: 9003988209745212788, guid: 219baffaf2bb54319b80841bcbc73ede, type: 3}
   - {fileID: 9003988209745212788, guid: 2ea5537eaf08f4c7ead665776c28f5cf, type: 3}
   - {fileID: 9003988209745212788, guid: 1656aeea521c44d4a9a8af0bfce6499f, type: 3}
-  player1Panel: {fileID: 0}
-  player1NextButton: {fileID: 0}
-  player1PreviousButton: {fileID: 0}
-  player1ConfirmButton: {fileID: 0}
-  player2Panel: {fileID: 0}
-  player2NextButton: {fileID: 0}
-  player2PreviousButton: {fileID: 0}
-  player2ConfirmButton: {fileID: 0}
+  player1Panel: {fileID: 850261797}
+  player1NextButton: {fileID: 1326330808}
+  player1PreviousButton: {fileID: 1686602923}
+  player1ConfirmButton: {fileID: 1131248129}
+  player2Panel: {fileID: 1882647787}
+  player2NextButton: {fileID: 77388925}
+  player2PreviousButton: {fileID: 1341087578}
+  player2ConfirmButton: {fileID: 1128538924}
 --- !u!4 &1106629612
 Transform:
   m_ObjectHideFlags: 0
@@ -3378,7 +3379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.46347046, y: -0.0026245117}
+  m_AnchoredPosition: {x: -0.46350098, y: -0.0026855469}
   m_SizeDelta: {x: 1124.7, y: 1268.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882647788
